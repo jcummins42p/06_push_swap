@@ -6,11 +6,28 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:22:09 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/20 16:38:03 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:43:21 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	valid_uniq(t_stack **a, int n)
+{
+	t_stack	*curr;
+
+	if (*a == NULL)
+		return (-1);
+	curr = *a;
+	while (curr)
+	{
+		if (curr->val == n)
+			return (0);
+		else
+			curr = curr->next;
+	}
+	return (1);
+}
 
 int	valid_in(char **argv)
 {

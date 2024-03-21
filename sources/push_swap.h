@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/20 16:48:56 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:32:49 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 typedef struct s_stack
 {
@@ -30,5 +31,6 @@ int				isnum(char c);
 int				valid_in(char **argv);
 void			stack_init(t_stack **a, char **argv);
 int				isnum(char c);
+int				valid_uniq(t_stack **a, int n);
 
 #endif
