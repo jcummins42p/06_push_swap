@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:25:23 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/21 17:22:29 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/22 11:41:52 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	list_node(t_stack **a)
 	{
 		while (curr)
 		{
-			printf("Current node %p, value %d\n", curr, curr->val);
+			printf("Node: %p\t Value: %d\n", curr, curr->val);
 			curr = curr->next;
 		}
 	}
