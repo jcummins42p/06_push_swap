@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:22:09 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/21 14:43:21 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:19:59 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	valid_uniq(t_stack **a, int n)
 {
 	t_stack	*curr;
 
-	if (*a == NULL)
-		return (-1);
 	curr = *a;
 	while (curr)
 	{
@@ -29,7 +27,15 @@ int	valid_uniq(t_stack **a, int n)
 	return (1);
 }
 
-int	valid_in(char **argv)
+int	valid_range(long n)
+{
+	if (n > INT_MAX || n < INT_MIN)
+		return (0);
+	else
+		return (1);
+}
+
+int	valid_numb(char **argv)
 {
 	int	i;
 	int	j;
@@ -40,7 +46,7 @@ int	valid_in(char **argv)
 	{
 		while (argv[i][j])
 		{
-			if (argv[i][j] == '-')
+			if (argv[i][j] == '-' || argv[i][j] == '+')
 				j++;
 			if (!isnum(argv[i][j]))
 				return (0);

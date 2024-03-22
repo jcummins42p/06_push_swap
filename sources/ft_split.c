@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:46:20 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/20 15:16:46 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:40:21 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ char	**ft_split(char const *s, char c)
 			i++;
 		letters = lcount(s, c, i);
 		split[w] = ft_substr(s, i, i + letters);
-		i += (letters + 1);
+		i += (letters);
 	}
-	split[w] = '\0';
+	split[w] = NULL;
 	return (split);
 }
