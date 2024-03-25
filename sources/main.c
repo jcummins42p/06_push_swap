@@ -6,29 +6,17 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:09:10 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/21 18:43:56 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:16:16 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	argv_print(char **argv)
+//	Starting at i = 1 because the first element is non-malloc'd placeholder
+void	argv_free(char **argv)
 {
 	int	i;
 
-	i = 0;
-	while (argv[i])
-	{
-		printf("%d: %s\n", i, argv[i]);
-		i++;
-	}
-}
-
-void	array_free(char **argv)
-{
-	int	i;
-
-	i = 0;
+	i = 1;
 	while (argv[i])
 		free(argv[i++]);
 	free(argv);
@@ -49,13 +37,12 @@ int	main(int argc, char **argv)
 		free_flag = 1;
 		argv = ft_split(argv[1], ' ');
 	}
-	if (valid_numb(argv))
-		stack_init(&a, &argv[1]);
-	else
+	if (!list_init(&a, &argv[1]))
 		printf("error, non number argument passed\n");
-	list_node(&a);
-	stack_clear(&a);
+	else
+		list_print(&a);
+	list_clear(&a);
 	if (free_flag)
-		array_free(argv);
+		argv_free(argv);
 	return (0);
 }

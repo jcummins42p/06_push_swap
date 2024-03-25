@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:25:23 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/22 11:41:52 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:13:26 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	app_node(t_stack **a, int n)
 	return (1);
 }
 
-void	list_node(t_stack **a)
+void	list_print(t_stack **a)
 {
 	t_stack	*curr;
 
@@ -66,7 +66,7 @@ void	list_node(t_stack **a)
 	}
 }
 
-void	stack_clear(t_stack **a)
+void	list_clear(t_stack **a)
 {
 	t_stack	*curr;
 	t_stack	*swap;
@@ -83,23 +83,21 @@ void	stack_clear(t_stack **a)
 	*a = NULL;
 }
 
-int	stack_init(t_stack **a, char **argv)
+int	list_init(t_stack **a, char **argv)
 {
 	long	n;
 	int		i;
 
 	i = 0;
+	if (!valid_numb(argv))
+		return (0);
 	while (argv[i])
 	{
 		n = ft_atol(argv[i]);
 		if (valid_uniq(a, n) && valid_range(n))
 			app_node(a, (int)n);
 		else
-		{
-			printf("Invalid input\n");
-			stack_clear(a);
 			return (0);
-		}
 		i++;
 	}
 	return (1);

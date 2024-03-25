@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/21 18:41:32 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:15:48 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int				valid_numb(char **argv);
 //		stack_init.c
 t_stack			*last_node(t_stack **a);
 int				app_node(t_stack **a, int n);
-void			list_node(t_stack **a);
-void			stack_clear(t_stack **a);
-int				stack_init(t_stack **a, char **argv);
+void			list_print(t_stack **a);
+void			list_clear(t_stack **a);
+int				list_init(t_stack **a, char **argv);
 //		push.c
 void			push(t_stack **a, t_stack **b);
 //		swap.c
@@ -47,5 +47,7 @@ void			swap(t_stack **s);
 //		rotate.c
 void			rote(t_stack **s);
 void			rrot(t_stack **s);
+//		main.c
+void			argv_free(char **argv);
 
 #endif
