@@ -6,14 +6,27 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 17:06:54 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/21 18:50:27 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:49:22 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack **s)
+void	swap(t_stack **src)
 {
-	if (s == NULL || *s == NULL)
-		return ;
+	t_stack	*first;
+	t_stack	*second;
+
+	if (*src && (*src)->next)
+	{
+		first = (*src);
+		second = (*src)->next;
+		first->next = second->next;
+		if (second->next)
+			second->next->prev = first;
+		second->prev = first->prev;
+		second->next = first;
+		first->prev = second;
+		*src = second;
+	}
 }
