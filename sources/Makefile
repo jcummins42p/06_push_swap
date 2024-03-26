@@ -6,14 +6,14 @@
 #    By: jcummins <jcummins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/26 18:08:59 by jcummins          #+#    #+#              #
-#    Updated: 2024/03/21 15:18:52 by jcummins         ###   ########.fr        #
+#    Updated: 2024/03/26 18:24:51 by jcummins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap.out
 HEADER = push_swap.h
 CC = cc
-CFLAGS = -g -Werror -Wextra -Wall
+CFLAGS = -g -Werror -Wextra -Wall -pedantic
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 LIB = libft.a
