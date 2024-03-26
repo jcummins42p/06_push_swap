@@ -6,50 +6,49 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:33:34 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/26 18:42:12 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:19:05 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	populate_b(t_stack **a, t_stack **b)
+void	populate_b(t_stack **a, t_stack **b, int remain)
 {
 	int	i;
 
 	i = 0;
 	i = list_size(a);
-	while (i > 3)
+	while (i > remain)
 	{
 		push(a, b);
 		i--;
 	}
 }
 
-int	check_sorted(t_stack **a)
+void	swap_stacks(t_stack **a, t_stack **b)
 {
-	t_stack	*curr;
-	int		i;
+	t_stack	*swap;
 
-	i = 0;
-	curr = *a;
-	while (curr->next)
-	{
-		if (curr->val > curr->next->val)
-			return (0);
-		curr = curr->next;
-	}
-	return (1);
+	swap = *a;
+	*a = *b;
+	*b = swap;
 }
 
-void ft_sort(t_stack **a)
+void	ft_sort(t_stack **a)
 {
-	t_stack *b;
+	t_stack	*b;
 
 	b = NULL;
 	if (check_sorted(a))
-		printf("\nInput already sorted. nothing to change\n");
-	populate_b(a, &b);
-	/*rr(a, &b);*/
+		ft_printf("\nInput already sorted.\n");
+	if (check_reverse(a))
+	{
+		ft_printf("\nInput reverse sorted.\n");
+		populate_b(a, &b, 0);
+		swap_stacks(a, &b);
+	}
+	else
+		populate_b(a, &b, 3);
 	draw_stacks(a, &b);
 	list_clear(a);
 	list_clear(&b);

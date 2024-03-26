@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 12:07:45 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/26 18:20:44 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:18:03 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,6 @@ char	*ft_itoa_pad(int n, int pad)
 	/*int	i;*/
 
 	/*i = -2147483648;*/
-	/*printf("The number %d as a string is %s\n", i, ft_itoa(i));*/
+	/*ft_printf("The number %d as a string is %s\n", i, ft_itoa(i));*/
 	/*return (0);*/
 /*}*/

@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:41:05 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/26 18:22:52 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:20:51 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ void	draw_stacks(t_stack **a, t_stack **b)
 	height = list_size(a);
 	if (height <= list_size(b))
 		height = list_size(b);
-	printf("\n");
+	ft_printf("\n");
 	while (i <= height)
 	{
 		col_a = draw_by_index(a, (height - i));
 		col_b = draw_by_index(b, (height - i));
 		if (i == height)
-			printf("HEAD ->");
-		printf("\t%s\t\t%s\n",
+			ft_printf("HEAD ->");
+		ft_printf("\t%s\t\t%s\n",
 			col_a, col_b);
 		i++;
 		free(col_a);
 		free(col_b);
 	}
-	printf("\t~~~~~~~\t\t\t~~~~~~~\n");
-	printf("\tStack A\t\t\tStack B\n\n");
+	ft_printf("\t~~~~~~~\t\t\t~~~~~~~\n");
+	ft_printf("\tStack A\t\t\tStack B\n\n");
 }
 
 char	*draw_by_index(t_stack **s, size_t index)

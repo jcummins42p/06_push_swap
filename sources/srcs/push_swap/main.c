@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:09:10 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/26 18:40:30 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:20:08 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 		argv = ft_split(argv[1], ' ');
 	}
 	if (!list_init(&a, &argv[1]))
-		printf("error, non number argument passed\n");
+		ft_printf("error, non number argument passed\n");
 	else
 		ft_sort(&a);
 	if (free_flag)

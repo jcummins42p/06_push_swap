@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/26 18:39:19 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:23:01 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdarg.h>
+# include <fcntl.h>
 
 typedef struct s_stack
 {
@@ -25,6 +27,8 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }	t_stack;
 
+//		ft_printf.c
+int				ft_printf(const char *str, ...);
 //		ft_itoa_pad.c
 int				n_digits(unsigned int n);
 unsigned int	absolute(int n);
@@ -59,9 +63,11 @@ void			rrr(t_stack **a, t_stack **b);
 void			draw_stacks(t_stack **a, t_stack **b);
 char			*draw_by_index(t_stack **s, size_t index);
 void			list_print(t_stack **a);
-//		sort.c
-void			populate_b(t_stack **a, t_stack **b);
+//		sort_checks.c
+int				check_reverse(t_stack **a);
 int				check_sorted(t_stack **a);
+//		sort.c
+void			populate_b(t_stack **a, t_stack **b, int remain);
 void			ft_sort(t_stack **a);
 //		main.c
 void			argv_free(char **argv);
