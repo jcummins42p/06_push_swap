@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:33:34 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/26 20:19:05 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:02:47 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_sort(t_stack **a)
 	b = NULL;
 	if (check_sorted(a))
 		ft_printf("\nInput already sorted.\n");
-	if (check_reverse(a))
+	else if (check_reverse(a))
 	{
 		ft_printf("\nInput reverse sorted.\n");
 		populate_b(a, &b, 0);
