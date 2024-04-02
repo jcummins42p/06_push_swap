@@ -6,29 +6,52 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 17:06:54 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/25 14:49:53 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/02 19:00:48 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack **src, t_stack **dst)
+void	pa(t_stack **b, t_stack **a)
 {
 	t_stack	*swap;
 
-	if (*src)
+	if (*b)
 	{
-		swap = (*src)->next;
-		if (*dst)
+		swap = (*b)->next;
+		if (*a)
 		{
-			(*src)->next = *dst;
-			(*dst)->prev = *src;
+			(*b)->next = *a;
+			(*a)->prev = *b;
 		}
 		else
-			(*src)->next = NULL;
-		*dst = *src;
-		*src = swap;
-		if (*src)
-			(*src)->prev = NULL;
+			(*b)->next = NULL;
+		*a = *b;
+		*b = swap;
+		if (*b)
+			(*b)->prev = NULL;
 	}
+	printf("pb\n");
+}
+
+void	pb(t_stack **a, t_stack **b)
+{
+	t_stack	*swap;
+
+	if (*a)
+	{
+		swap = (*a)->next;
+		if (*b)
+		{
+			(*a)->next = *b;
+			(*b)->prev = *a;
+		}
+		else
+			(*a)->next = NULL;
+		*b = *a;
+		*a = swap;
+		if (*a)
+			(*a)->prev = NULL;
+	}
+	printf("pb\n");
 }
