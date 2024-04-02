@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 17:06:54 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/02 19:00:48 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/02 19:39:29 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	pa(t_stack **b, t_stack **a)
 		if (*b)
 			(*b)->prev = NULL;
 	}
-	printf("pb\n");
+	printf("pa\n");
 }
 
 void	pb(t_stack **a, t_stack **b)

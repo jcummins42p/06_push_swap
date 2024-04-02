@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:33:34 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/02 19:02:56 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/02 20:08:00 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,6 @@ void	populate_b(t_stack **a, t_stack **b, int remain)
 		pb(a, b);
 		i--;
 	}
-}
-
-void	swap_stacks(t_stack **a, t_stack **b)
-{
-	t_stack	*swap;
-
-	swap = *a;
-	*a = *b;
-	*b = swap;
 }
 
 void	sort_three(t_stack **a)
@@ -51,17 +42,14 @@ void	ft_sort(t_stack **a)
 
 	b = NULL;
 	if (check_sorted(a))
-		ft_printf("\nInput already sorted.\n");
-	//else if (check_reverse(a))
-	//{
-		//ft_printf("\nInput reverse sorted.\n");
-		//populate_b(a, &b, 0);
-		//swap_stacks(a, &b);
-	//}
+		/*ft_printf("\nInput already sorted.\n")*/;
 	else
 	{
 		populate_b(a, &b, 3);
+		draw_stacks(a, &b);
 		sort_three(a);
+		draw_stacks(a, &b);
+		slow_sort(a, &b);
 	}
 	draw_stacks(a, &b);
 	list_clear(a);

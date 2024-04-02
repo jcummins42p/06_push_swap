@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/02 19:02:13 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/02 19:52:24 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ void			list_print(t_stack **a);
 //		sort_checks.c
 int				check_reverse(t_stack **a);
 int				check_sorted(t_stack **a);
+
+//		slow_sort.c
+void			slow_sort(t_stack **a, t_stack **b);
 
 //		sort.c
 void			populate_b(t_stack **a, t_stack **b, int remain);
