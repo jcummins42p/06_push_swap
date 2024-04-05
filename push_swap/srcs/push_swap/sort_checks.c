@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:21:37 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/26 19:30:12 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:22:22 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 int	check_reverse(t_stack **a)
 {
 	t_stack	*curr;
-	int		i;
 
-	i = 0;
 	curr = *a;
 	while (curr->next)
 	{
@@ -31,9 +29,7 @@ int	check_reverse(t_stack **a)
 int	check_sorted(t_stack **a)
 {
 	t_stack	*curr;
-	int		i;
 
-	i = 0;
 	curr = *a;
 	while (curr->next)
 	{

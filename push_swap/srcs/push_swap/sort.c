@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:33:34 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/02 20:08:00 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/05 19:53:08 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,16 @@ void	ft_sort(t_stack **a)
 		/*ft_printf("\nInput already sorted.\n")*/;
 	else
 	{
+		/*draw_stacks(a, &b);*/
 		populate_b(a, &b, 3);
-		draw_stacks(a, &b);
+		/*draw_stacks(a, &b);*/
 		sort_three(a);
-		draw_stacks(a, &b);
-		slow_sort(a, &b);
+		/*draw_stacks(a, &b);*/
+		med_sort(a, &b);
 	}
-	draw_stacks(a, &b);
+	/*draw_stacks(a, &b);*/
+	/*if (check_sorted(a))*/
+		/*ft_printf("List Sorted\n");*/
 	list_clear(a);
 	list_clear(&b);
 }

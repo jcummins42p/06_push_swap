@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 17:06:54 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/02 18:52:16 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/05 19:53:24 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	sa(t_stack **a, int print_command)
 	}
 	if (print_command)
 		ft_printf("sa\n");
+	fflush(stdout);
 }
 
 void	sb(t_stack **b, int print_command)
@@ -52,11 +53,13 @@ void	sb(t_stack **b, int print_command)
 	}
 	if (print_command)
 		ft_printf("sb\n");
+	fflush(stdout);
 }
 
 void	ss(t_stack **a, t_stack **b)
 {
 	sa(a, 0);
-	sa(b, 0);
+	sb(b, 0);
 	ft_printf("ss\n");
+	fflush(stdout);
 }
