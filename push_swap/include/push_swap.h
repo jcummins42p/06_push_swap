@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/02 19:52:24 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/06 13:31:22 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@ typedef struct s_stack
 int				ft_printf(const char *str, ...);
 
 //		ft_itoa_pad.c
-int				n_digits(unsigned int n);
-unsigned int	absolute(int n);
-char			*empty_pad(int pad);
-char			*printstr_pad(char *s, unsigned int n, int neg, int pad);
 char			*ft_itoa_pad(int n, int pad);
 
 //		ft_split.c
@@ -49,9 +45,13 @@ int				valid_range(long n);
 int				valid_uniq(t_stack **a, int n);
 int				valid_numb(char **argv);
 
-//		stack_utils.c
+//		stack_info.c
+int				min_value(t_stack **s);
+int				max_value(t_stack **s);
 t_stack			*last_node(t_stack **a);
 size_t			list_size(t_stack **s);
+
+//		stack_init.c
 int				new_node(t_stack **a, int n);
 void			list_clear(t_stack **a);
 int				list_init(t_stack **a, char **argv);
@@ -77,8 +77,6 @@ void			rrr(t_stack **a, t_stack **b);
 
 //		visualise.c
 void			draw_stacks(t_stack **a, t_stack **b);
-char			*draw_by_index(t_stack **s, size_t index);
-void			list_print(t_stack **a);
 
 //		sort_checks.c
 int				check_reverse(t_stack **a);
@@ -86,6 +84,9 @@ int				check_sorted(t_stack **a);
 
 //		slow_sort.c
 void			slow_sort(t_stack **a, t_stack **b);
+
+//		med_sort.c
+void			med_sort(t_stack **a, t_stack **b);
 
 //		sort.c
 void			populate_b(t_stack **a, t_stack **b, int remain);
