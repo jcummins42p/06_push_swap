@@ -6,11 +6,46 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:41:05 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/26 20:20:51 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/06 13:36:40 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+char	*empty_pad(int pad)
+{
+	char	*str;
+
+	str = (char *)malloc((pad) * sizeof(char));
+	if (!str)
+		return (NULL);
+	str[--pad] = '\0';
+	while (pad-- > 0)
+		str[pad] = ' ';
+	return (str);
+}
+
+char	*draw_by_index(t_stack **s, size_t index)
+{
+	t_stack	*curr;
+	size_t	i;
+	char	*out;
+	int		pad;
+
+	i = 0;
+	curr = *s;
+	out = NULL;
+	pad = 12;
+	while (curr)
+	{
+		if (i++ == index)
+			out = ft_itoa_pad(curr->val, pad);
+		curr = curr->next;
+	}
+	if (!out)
+		out = empty_pad(pad);
+	return (out);
+}
 
 void	draw_stacks(t_stack **a, t_stack **b)
 {
@@ -38,26 +73,4 @@ void	draw_stacks(t_stack **a, t_stack **b)
 	}
 	ft_printf("\t~~~~~~~\t\t\t~~~~~~~\n");
 	ft_printf("\tStack A\t\t\tStack B\n\n");
-}
-
-char	*draw_by_index(t_stack **s, size_t index)
-{
-	t_stack	*curr;
-	size_t	i;
-	char	*out;
-	int		pad;
-
-	i = 0;
-	curr = *s;
-	out = NULL;
-	pad = 12;
-	while (curr)
-	{
-		if (i++ == index)
-			out = ft_itoa_pad(curr->val, pad);
-		curr = curr->next;
-	}
-	if (!out)
-		out = empty_pad(pad);
-	return (out);
 }
