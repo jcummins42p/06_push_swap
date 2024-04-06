@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:33:34 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/05 19:53:08 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/06 13:44:31 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ void	ft_sort(t_stack **a)
 		/*draw_stacks(a, &b);*/
 		sort_three(a);
 		/*draw_stacks(a, &b);*/
-		med_sort(a, &b);
+		/*med_sort(a, &b);*/
+		slow_sort(a, &b);
 	}
-	/*draw_stacks(a, &b);*/
+	draw_stacks(a, &b);
 	/*if (check_sorted(a))*/
 		/*ft_printf("List Sorted\n");*/
 	list_clear(a);
