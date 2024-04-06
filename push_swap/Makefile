@@ -6,7 +6,7 @@
 #    By: jcummins <jcummins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/26 18:08:59 by jcummins          #+#    #+#              #
-#    Updated: 2024/03/26 20:25:54 by jcummins         ###   ########.fr        #
+#    Updated: 2024/04/06 23:17:11 by jcummins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ fclean: clean
 	@echo "Removing all object files and executable"
 	@rm -rf $(NAME)
 	@rm -rf *.out
+	@rm -rf *.txt
 
 re:	fclean all
 

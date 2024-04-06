@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/06 13:31:22 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/06 22:34:09 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_stack
 int				ft_printf(const char *str, ...);
 
 //		ft_itoa_pad.c
+unsigned int	absolute(int n);
 char			*ft_itoa_pad(int n, int pad);
 
 //		ft_split.c
@@ -67,7 +68,7 @@ void			ss(t_stack **a, t_stack **b);
 
 //		rotate.c
 void			ra(t_stack **a, int print_command);
-void			ra(t_stack **b, int print_command);
+void			rb(t_stack **b, int print_command);
 void			rr(t_stack **a, t_stack **b);
 
 //		rev_rotate.c
