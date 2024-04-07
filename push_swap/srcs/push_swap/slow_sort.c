@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:30:28 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/06 13:17:06 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/07 13:30:06 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	slow_sort(t_stack **a, t_stack **b)
 
 	a_min = min_value(a);
 	a_max = max_value(a);
+	populate_b(a, b, 3);
+	sort_three_asc_a(a);
 	while (*b)
 	{
 		/*draw_stacks(a, b);*/

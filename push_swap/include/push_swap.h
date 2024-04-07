@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/06 22:34:09 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/07 14:23:17 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,18 @@ void			slow_sort(t_stack **a, t_stack **b);
 //		med_sort.c
 void			med_sort(t_stack **a, t_stack **b);
 
+//		med_sort.c
+void			mirror_sort(t_stack **a, t_stack **b);
+
+//		series_push.c
+void			populate_b_desc(t_stack **a, t_stack **b, int remain);
+
 //		sort.c
+int				dir_ins_ascending(t_stack **a, int insert);
+int				dir_ins_descending(t_stack **b, int insert);
 void			populate_b(t_stack **a, t_stack **b, int remain);
+void			sort_three_asc_a(t_stack **s);
+void			sort_three_desc_b(t_stack **s);
 void			ft_sort(t_stack **a);
 
 //		main.c
