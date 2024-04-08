@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:09:10 by jcummins          #+#    #+#             */
-/*   Updated: 2024/03/26 20:48:43 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:22:46 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,24 @@ void	argv_free(char **argv)
 	while (argv[i])
 		free(argv[i++]);
 	free(argv);
+}
+
+void	ft_sort(t_stack **a)
+{
+	t_stack	*b;
+
+	b = NULL;
+	if (check_sorted(a))
+		;
+	else
+	{
+		/*slow_insert(a, &b);*/
+		/*med_insert(a, &b);*/
+		mirror_insert(a, &b);
+	}
+	/*draw_stacks(a, &b);*/
+	list_clear(a);
+	list_clear(&b);
 }
 
 int	main(int argc, char **argv)
@@ -37,7 +55,7 @@ int	main(int argc, char **argv)
 		argv = ft_split(argv[1], ' ');
 	}
 	if (!list_init(&a, &argv[1]))
-		ft_printf("Error\n"); // Need to change ft_printf to std err
+		write(2, "Error\n", 6);
 	else
 		ft_sort(&a);
 	if (free_flag)

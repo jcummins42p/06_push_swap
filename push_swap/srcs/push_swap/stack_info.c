@@ -6,13 +6,13 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:25:23 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/06 13:17:06 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/08 18:08:35 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	min_value(t_stack **s)
+int	min_v(t_stack **s)
 {
 	t_stack	*curr;
 	int		min;
@@ -30,7 +30,7 @@ int	min_value(t_stack **s)
 	return (min);
 }
 
-int	max_value(t_stack **s)
+int	max_v(t_stack **s)
 {
 	t_stack	*curr;
 	int		max;
@@ -46,6 +46,20 @@ int	max_value(t_stack **s)
 		curr = curr->next;
 	}
 	return (max);
+}
+
+t_stack *find_node(t_stack **s, int search)
+{
+	t_stack	*curr;
+
+	curr = *s;
+	while (curr)
+	{
+		if (curr->val == search)
+			return (curr);
+		curr = curr->next;
+	}
+	return (NULL);
 }
 
 t_stack	*last_node(t_stack **dst)
