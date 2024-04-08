@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:30:28 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/08 19:20:39 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/08 20:08:33 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void	insort_to_a(t_stack **a, t_stack **b)
 		if ((*b)->val == max_v(b) && (*b)->next)
 			rrb(b, 1);
 		rot = cost_asc(a, (*b)->val, min_v(a), max_v(a));
-		/*if ((*b)->next)*/
-			/*cheap_neighbour_asc(a, b, &rot);*/
+		if ((*b)->next)
+			cheap_neighbour_asc(a, b, &rot);
 		if (rot > 0)
 			while (rot-- > 0)
 				ra(a, 1);
@@ -62,8 +62,8 @@ static void	insort_to_b(t_stack **a, t_stack **b)
 		pb(a, b);
 		i++;
 	}
-	/*find_node(b, min_v(b))->sentry = min_v(b);*/
-	/*find_node(b, max_v(b))->sentry = max_v(b);*/
+	find_node(b, min_v(b))->sentry = min_v(b);
+	find_node(b, max_v(b))->sentry = max_v(b);
 }
 
 void	mirror_insert(t_stack **a, t_stack **b)

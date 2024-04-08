@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:49:40 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/08 19:20:00 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/08 20:08:09 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,21 @@ static int	n_rx_to_max(t_stack **s, int min_s)
 //	and updates the rot variable with the new value and direction to the target.
 void	cheap_neighbour_asc(t_stack **a, t_stack **b, int *rot)
 {
-	int	rot_ra;
-	int	rot_rra;
+	int	rot_rb;
+	int	rot_rrb;
 
-	rot_ra = cost_asc(b, (*a)->next->val, min_v(b), max_v(b));
-	if ((absolute(rot_ra) + 1) < absolute(*rot))
+	//	rb is CORRECT because we are rotating the source array before the insert
+	rot_rb = cost_asc(a, (*b)->next->val, min_v(a), max_v(a));
+	if ((absolute(rot_rb) + 1) < absolute(*rot))
 	{
-		ra(a, 1);
-		*rot = rot_ra;
+		rb(b, 1);
+		*rot = rot_rb;
 	}
-	rot_rra = cost_asc(b, last_node(a)->val, min_v(b), max_v(b));
-	if ((absolute(rot_rra) + 1) < absolute(*rot))
+	rot_rrb = cost_asc(a, last_node(b)->val, min_v(a), max_v(a));
+	if ((absolute(rot_rrb) + 1) < absolute(*rot))
 	{
-		rra(a, 1);
-		*rot = rot_rra;
+		rrb(b, 1);
+		*rot = rot_rrb;
 	}
 }
 
