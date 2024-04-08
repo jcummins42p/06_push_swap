@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/08 19:14:58 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/08 20:39:51 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 typedef struct s_stack
 {
 	int				val;
-	int				sentry;
+	int				sentry_min;
+	int				sentry_max;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -113,10 +114,11 @@ void			cheap_neighbour_desc(t_stack **a, t_stack **b, int *rot);
 int				cost_desc(t_stack **b, int insert, int min_b, int max_b);
 
 
-//		sort.c	- general sort functions used by multiple algorithms
+//		sort_utils.c	- general sort functions used by multiple algorithms
 void			populate_b(t_stack **a, t_stack **b, int remain);
 void			sort_three(t_stack **s, int direction);
-void			final_sort(t_stack **a);
+void			final_sort_a(t_stack **a);
+void			final_sort_b(t_stack **b);
 
 //		main.c
 void			argv_free(char **argv);

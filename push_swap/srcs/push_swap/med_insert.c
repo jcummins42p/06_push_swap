@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:30:28 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/08 18:37:00 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/08 20:41:12 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ void	med_insert(t_stack **a, t_stack **b)
 				rra(a, 1);
 		pa(b, a);
 	}
-	final_sort(a);
+	final_sort_a(a);
 }

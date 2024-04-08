@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:30:28 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/08 20:08:33 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/08 20:45:27 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,16 @@ static void	insort_to_a(t_stack **a, t_stack **b)
 
 	while (*b)
 	{
-		if ((*b)->val == min_v(b) && (*b)->next)
-			rb(b, 1);
-		if ((*b)->val == max_v(b) && (*b)->next)
+		if ((*b)->sentry_min && list_size(b) > list_size(a))
+		{
 			rrb(b, 1);
+			rrb(b, 1);
+		}
+		else if ((*b)->sentry_max && list_size(b) > list_size(a))
+		{
+			rb(b, 1);
+			rb(b, 1);
+		}
 		rot = cost_asc(a, (*b)->val, min_v(a), max_v(a));
 		if ((*b)->next)
 			cheap_neighbour_asc(a, b, &rot);
@@ -62,8 +68,8 @@ static void	insort_to_b(t_stack **a, t_stack **b)
 		pb(a, b);
 		i++;
 	}
-	find_node(b, min_v(b))->sentry = min_v(b);
-	find_node(b, max_v(b))->sentry = max_v(b);
+	find_node(b, min_v(b))->sentry_min = min_v(b);
+	find_node(b, max_v(b))->sentry_max = max_v(b);
 }
 
 void	mirror_insert(t_stack **a, t_stack **b)
@@ -71,8 +77,9 @@ void	mirror_insert(t_stack **a, t_stack **b)
 	populate_b(a, b, list_size(a) - 3);
 	sort_three(b, -1);
 	insort_to_b(a, b);
+	final_sort_b(b);
 	populate_b(a, b, 3);
 	sort_three(a, 1);
 	insort_to_a(a, b);
-	final_sort(a);
+	final_sort_a(a);
 }

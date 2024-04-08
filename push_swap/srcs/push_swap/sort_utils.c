@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:33:34 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/08 18:36:45 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/08 20:42:06 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,23 @@ void	sort_three(t_stack **s, int direction)
 		ft_printf("direction arg neg for descending or pos for ascending\n");
 }
 
-void	final_sort(t_stack **a)
+void	final_sort_b(t_stack **b)
+{
+	int	rotate_by;
+
+	rotate_by = 0;
+	rotate_by = cost_asc(b, min_v(b) - 1, min_v(b), max_v(b));
+	if (rotate_by > 0)
+		while (rotate_by-- > 0)
+			rb(b, 1);
+	else if (rotate_by < 0)
+		while (rotate_by++ < 0)
+			rrb(b, 1);
+	while ((*b)->val > last_node(b)->val)
+		rb(b, 1);
+}
+
+void	final_sort_a(t_stack **a)
 {
 	int	rotate_by;
 
