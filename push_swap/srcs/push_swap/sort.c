@@ -6,24 +6,26 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:33:34 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/07 13:47:14 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/08 12:42:52 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//	finds the most efficient number of rotations and direction to place integer
-//	in target stack in ascending order into list a
-int	dir_ins_ascending(t_stack **a, int insert)
+
+//	A function that takes the target stack, the number to insert, and the des-
+//	ired orientation of sort (positive number for ascending, neg fro descending
+int	insert_direction(t_stack **a, int insert, int orient)
 {
 	int		distance_ra;
-	int		distance_rra;
 	int		target;
-	t_stack *curr;
+	t_stack	*curr;
 
 	curr = *a;
-	target = min_value(a);
+	if (orient > 0)
+		target = min_value(a);
+	else if (orient < 0)
+		target = max_value(a);
 	distance_ra = 0;
-	distance_rra = 0;
 	if (insert > max_value(a))
 	{
 		target = min_value(a);
@@ -51,25 +53,67 @@ int	dir_ins_ascending(t_stack **a, int insert)
 		if (curr)
 			target = curr->val;
 	}
-	distance_rra = list_size(a) - distance_ra;
-	if (distance_rra > distance_ra)
+	if (distance_ra < (int)(list_size(a) / 2))
 		return (distance_ra);
 	else
-		return (0 - distance_rra);
+		return (distance_ra - (int)list_size(a));
 }
+
+//	finds the most efficient number of rotations and direction to place integer
+//	in target stack in ascending order into list a
+int	dir_ins_ascending(t_stack **a, int insert)
+{
+	int		distance_ra;
+	int		target;
+	t_stack	*curr;
+
+	curr = *a;
+	target = min_value(a);
+	distance_ra = 0;
+	if (insert > max_value(a))
+	{
+		target = min_value(a);
+		while (curr->val != target)
+		{
+			distance_ra++;
+			curr = curr->next;
+		}
+	}
+	else
+	{
+		target = max_value(a);
+		distance_ra = 0;
+		while (curr && curr->val != min_value(a) && insert < curr->val)
+		{
+			curr = curr->next;
+			distance_ra++;
+		}
+		while (curr && insert > curr->val)
+		{
+			target = curr->val;
+			distance_ra++;
+			curr = curr->next;
+		}
+		if (curr)
+			target = curr->val;
+	}
+	if (distance_ra < (int)(list_size(a) / 2))
+		return (distance_ra);
+	else
+		return (distance_ra - (int)list_size(a));
+}
+
 //	finds the most efficient number of rotations and direction to place integer
 //	in target stack in descending order into list b
 int	dir_ins_descending(t_stack **b, int insert)
 {
 	int		distance_rb;
-	int		distance_rrb;
 	int		target;
-	t_stack *curr;
+	t_stack	*curr;
 
 	curr = *b;
 	target = max_value(b);
 	distance_rb = 0;
-	distance_rrb = 0;
 	if (insert < min_value(b))
 	{
 		target = max_value(b);
@@ -97,11 +141,10 @@ int	dir_ins_descending(t_stack **b, int insert)
 		if (curr)
 			target = curr->val;
 	}
-	distance_rrb = list_size(b) - distance_rb;
-	if (distance_rrb > distance_rb)
+	if (distance_rb < (int)(list_size(b) / 2))
 		return (distance_rb);
 	else
-		return (0 - distance_rrb);
+		return (distance_rb - (int)list_size(b));
 }
 
 void	populate_b(t_stack **a, t_stack **b, int remain)
@@ -117,26 +160,30 @@ void	populate_b(t_stack **a, t_stack **b, int remain)
 	}
 }
 
-void	sort_three_desc_b(t_stack **s)
+void	sort_three(t_stack **s, int direction)
 {
-	if ((*s)->val < (*s)->next->val && (*s)->val < (*s)->next->next->val)
-		rb(s, 1);
-	else if ((*s)->val < (*s)->next->val && \
-			(*s)->next->next->val > (*s)->next->val)
-		rrb(s, 1);
-	if ((*s)->val < (*s)->next->val)
-		sb(s, 1);
-}
-
-void	sort_three_asc_a(t_stack **s)
-{
-	if ((*s)->val > (*s)->next->val && (*s)->val > (*s)->next->next->val)
-		ra(s, 1);
-	else if ((*s)->val < (*s)->next->val && \
-			(*s)->next->next->val < (*s)->next->val)
-		rra(s, 1);
-	if ((*s)->val > (*s)->next->val)
-		sa(s, 1);
+	if (direction < 0)
+	{
+		if ((*s)->val < (*s)->next->val && (*s)->val < (*s)->next->next->val)
+			rb(s, 1);
+		else if ((*s)->val < (*s)->next->val && \
+				(*s)->next->next->val > (*s)->next->val)
+			rrb(s, 1);
+		if ((*s)->val < (*s)->next->val)
+			sb(s, 1);
+	}
+	else if (direction > 0)
+	{
+		if ((*s)->val > (*s)->next->val && (*s)->val > (*s)->next->next->val)
+			ra(s, 1);
+		else if ((*s)->val < (*s)->next->val && \
+				(*s)->next->next->val < (*s)->next->val)
+			rra(s, 1);
+		if ((*s)->val > (*s)->next->val)
+			sa(s, 1);
+	}
+	else
+		ft_printf("direction arg neg for descending or pos for ascending\n");
 }
 
 void	ft_sort(t_stack **a)
@@ -145,7 +192,7 @@ void	ft_sort(t_stack **a)
 
 	b = NULL;
 	if (check_sorted(a))
-		/*ft_printf("\nInput already sorted.\n")*/;
+		;
 	else
 	{
 		/*slow_sort(a, &b);*/
@@ -153,8 +200,6 @@ void	ft_sort(t_stack **a)
 		mirror_sort(a, &b);
 	}
 	/*draw_stacks(a, &b);*/
-	/*if (check_sorted(a))*/
-		/*ft_printf("List Sorted\n");*/
 	list_clear(a);
 	list_clear(&b);
 }
