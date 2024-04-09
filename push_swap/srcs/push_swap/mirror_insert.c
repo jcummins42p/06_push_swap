@@ -6,30 +6,49 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:30:28 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/08 20:45:27 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:18:33 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//	direction returns a positive number of required ra, or
-//	a negative number of required rra to get to target in a
-
-static void	insort_to_a(t_stack **a, t_stack **b)
+//	putting back the sorted numbers from b to a doesn't require the nearest
+//	neighbour function - this can result in global optimi suffering for small
+//	local efficiencies.
+void	sorted_to_a(t_stack **a, t_stack **b)
 {
 	int	rot;
 
 	while (*b)
 	{
-		if ((*b)->sentry_min && list_size(b) > list_size(a))
+		rot = cost_asc(a, (*b)->val, min_v(a), max_v(a));
+		if (rot > 0)
+			while (rot-- > 0)
+				ra(a, 1);
+		else if (rot < 0)
+			while (rot++ < 0)
+				rra(a, 1);
+		pa(b, a);
+	}
+}
+
+//	sorting the the unordered part of the list back into a, checking to avoid
+//	eating into the sorted list with the use of sentry values.
+void	insort_to_a(t_stack **a, t_stack **b)
+{
+	int	rot;
+
+	while (*b && list_size(b) > list_size(a))
+	{
+		if ((*b)->sentry_min)
 		{
-			rrb(b, 1);
-			rrb(b, 1);
+			rb(b, 1);
+			rb(b, 1);
 		}
-		else if ((*b)->sentry_max && list_size(b) > list_size(a))
+		else if ((*b)->sentry_max)
 		{
-			rb(b, 1);
-			rb(b, 1);
+			rrb(b, 1);
+			rrb(b, 1);
 		}
 		rot = cost_asc(a, (*b)->val, min_v(a), max_v(a));
 		if ((*b)->next)
@@ -46,14 +65,14 @@ static void	insort_to_a(t_stack **a, t_stack **b)
 
 //	sorts half of a into b in descending order, then flags the start and end
 //	of this so that they are not sorted back into a before unsorted values
-static void	insort_to_b(t_stack **a, t_stack **b)
+void	insort_to_b(t_stack **a, t_stack **b)
 {
 	int	rot;
 	int	half_a;
 	int	i;
 
 	i = 0;
-	half_a = list_size(a) / 2;
+	half_a = (list_size(a) / 2) - 1;
 	while (i < half_a)
 	{
 		rot = cost_desc(b, (*a)->val, min_v(b), max_v(b));
@@ -81,5 +100,7 @@ void	mirror_insert(t_stack **a, t_stack **b)
 	populate_b(a, b, 3);
 	sort_three(a, 1);
 	insort_to_a(a, b);
+	final_sort_a(a);
+	sorted_to_a(a, b);
 	final_sort_a(a);
 }

@@ -6,11 +6,12 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:09:10 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/08 15:22:46 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:20:30 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 //	Starting at i = 1 because the first element is non-malloc'd placeholder
 void	argv_free(char **argv)
 {
@@ -22,6 +23,23 @@ void	argv_free(char **argv)
 	free(argv);
 }
 
+//	more efficient management for smaller stacks
+void	sort_small(t_stack **a, t_stack **b, int size)
+{
+	if (size == 4)
+		pb(a, b);
+	else
+	{
+		pb(a, b);
+		pb(a, b);
+		insort_to_b(a, b);
+	}
+	if (size == 3)
+		sort_three(a, 1);
+	insort_to_a(a, b);
+	final_sort_a(a);
+}
+
 void	ft_sort(t_stack **a)
 {
 	t_stack	*b;
@@ -31,11 +49,15 @@ void	ft_sort(t_stack **a)
 		;
 	else
 	{
-		/*slow_insert(a, &b);*/
-		/*med_insert(a, &b);*/
-		mirror_insert(a, &b);
+		if (list_size(a) <= 2)
+			ra(a, 1);
+		else if (list_size(a) == 3)
+			sort_three(a, 1);
+		else if (list_size(a) < 7)
+			sort_small(a, &b, list_size(a));
+		else
+			mirror_insert(a, &b);
 	}
-	/*draw_stacks(a, &b);*/
 	list_clear(a);
 	list_clear(&b);
 }

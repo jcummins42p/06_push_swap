@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:49:40 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/08 20:08:09 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:58:03 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,16 @@ void	cheap_neighbour_asc(t_stack **a, t_stack **b, int *rot)
 
 	//	rb is CORRECT because we are rotating the source array before the insert
 	rot_rb = cost_asc(a, (*b)->next->val, min_v(a), max_v(a));
+	if (((*b)->next->sentry_min || (*b)->next->sentry_max) && (list_size(b) > list_size(a)))
+		rot_rb = INT_MAX - 1;
 	if ((absolute(rot_rb) + 1) < absolute(*rot))
 	{
 		rb(b, 1);
 		*rot = rot_rb;
 	}
 	rot_rrb = cost_asc(a, last_node(b)->val, min_v(a), max_v(a));
+	if ((last_node(b)->sentry_min || last_node(b)->sentry_max) && (list_size(b) > list_size(a)))
+		rot_rrb = INT_MAX - 1;
 	if ((absolute(rot_rrb) + 1) < absolute(*rot))
 	{
 		rrb(b, 1);

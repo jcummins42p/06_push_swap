@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/08 20:39:51 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:12:28 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void			med_insert(t_stack **a, t_stack **b);
 //		mirror_insert.c	-	mirror sorts half of a into b, then the other half
 //							is sorted back into a. Reduces time spent searching
 //							through a large sorted stack.
+void			insort_to_a(t_stack **a, t_stack **b);
+void			insort_to_b(t_stack **a, t_stack **b);
 void			mirror_insert(t_stack **a, t_stack **b);
 
 //		series_push.c
