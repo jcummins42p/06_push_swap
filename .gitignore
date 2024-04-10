@@ -3,3 +3,6 @@ push_swap/checker_linux
 .*.swp
 sort.c
 obj/
+push_swap_visualizer/build push_swap_visualizer/CMakeLists.txt push_swap_visualizer/dependencies push_swap_visualizer/imgui.ini push_swap_visualizer/include push_swap_visualizer/LICENSE push_swap_visualizer/push_swap push_swap_visualizer/README.md push_swap_visualizer/src push_swap_visualizer/tests
+push_swap_test_linux.sh
+Push-Swap-Tester/checker_linux Push-Swap-Tester/checker_Mac Push-Swap-Tester/pro_checker Push-Swap-Tester/push_swap_test_linux.sh Push-Swap-Tester/push_swap_test.sh Push-Swap-Tester/README_ES.md Push-Swap-Tester/README.md
