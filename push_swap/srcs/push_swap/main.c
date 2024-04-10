@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:09:10 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/10 14:36:04 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:16:14 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ int	main(int argc, char **argv)
 	{
 		argv = ft_split(argv[1], ' ');
 		if (argv)
+		{
+			argv[0] = "placeholder";
 			free_flag = 1;
+		}
 	}
 	if (argv && list_init(&a, &argv[1]))
 		ft_sort(&a);

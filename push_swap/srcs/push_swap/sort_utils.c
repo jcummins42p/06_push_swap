@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:33:34 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/10 13:47:30 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:19:17 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,16 @@ void	populate_b(t_stack **a, t_stack **b, int remain)
 	}
 }
 
+//	sorts the given stack into ascending order if direction is a positive int,
+//	into descending order if it is negative int.
 void	sort_three(t_stack **s, int direction)
 {
 	if (list_size(s) >= 3)
 	{
 		if (direction < 0)
 		{
-			if ((*s)->val < (*s)->next->val && (*s)->val < (*s)->next->next->val)
+			if ((*s)->val < (*s)->next->val && \
+					(*s)->val < (*s)->next->next->val)
 				rb(s, 1);
 			else if ((*s)->val > (*s)->next->val && \
 					(*s)->next->next->val > (*s)->next->val)
@@ -42,7 +45,8 @@ void	sort_three(t_stack **s, int direction)
 		}
 		else if (direction > 0)
 		{
-			if ((*s)->val > (*s)->next->val && (*s)->val > (*s)->next->next->val)
+			if ((*s)->val > (*s)->next->val && \
+					(*s)->val > (*s)->next->next->val)
 				ra(s, 1);
 			else if ((*s)->val < (*s)->next->val && \
 					(*s)->next->next->val < (*s)->next->val)

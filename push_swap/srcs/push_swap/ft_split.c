@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:46:20 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/10 14:26:42 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:14:31 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ char	**ft_split(char const *s, char c)
 	split = (char **)malloc((words + 1) * sizeof(char *));
 	if (split == NULL || s == NULL)
 		return (NULL);
-	split[w] = "./argv0";
 	while (++w < words)
 	{
 		while (s[i] == c)

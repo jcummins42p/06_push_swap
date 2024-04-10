@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:49:40 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/08 20:23:51 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:27:09 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,11 @@ int	n_rx_to_min(t_stack **s, int max_s)
 	return (distance_rs);
 }
 
-//	cheap_neighbour takes a look at the insertion cost of the two values in b
-//	are only one rotation away, rotates b to put them at the head of the stack,
-//	and updates the rot variable with the new value and direction to the target.
+//	finds alternative neighbouring values in a that would be more efficient to
+//	insert to b
 void	cheap_neighbour_desc(t_stack **a, t_stack **b, int *rot)
 {
-	int	rot_ra;	//	rot ra is CORRECT because we are rotating source array before insert
+	int	rot_ra;
 	int	rot_rra;
 
 	rot_ra = cost_desc(b, (*a)->next->val, min_v(b), max_v(b));

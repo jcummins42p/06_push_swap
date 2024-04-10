@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:30:28 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/10 13:44:23 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:28:35 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	sorted_to_a(t_stack **a, t_stack **b)
 	while (*b)
 	{
 		rot = cost_asc(a, (*b)->val, min_v(a), max_v(a));
-		/*ft_printf("Cheapest rotation is %d\n", rot);*/
 		if (rot > 0)
 			while (rot-- > 0)
 				ra(a, 1);
@@ -35,7 +34,7 @@ void	sorted_to_a(t_stack **a, t_stack **b)
 
 //	sorting the the unordered part of the list back into a, checking to avoid
 //	eating into the sorted list with the use of sentry values.
-void	insort_to_a(t_stack **a, t_stack **b)
+void	sort_into_a(t_stack **a, t_stack **b)
 {
 	int	rot;
 
@@ -66,7 +65,7 @@ void	insort_to_a(t_stack **a, t_stack **b)
 
 //	sorts half of a into b in descending order, then flags the start and end
 //	of this so that they are not sorted back into a before unsorted values
-void	insort_to_b(t_stack **a, t_stack **b)
+void	sort_into_b(t_stack **a, t_stack **b)
 {
 	int	rot;
 	int	half_a;
@@ -96,11 +95,11 @@ void	mirror_insert(t_stack **a, t_stack **b)
 {
 	populate_b(a, b, list_size(a) - 3);
 	sort_three(b, -1);
-	insort_to_b(a, b);
+	sort_into_b(a, b);
 	final_sort_b(b);
 	populate_b(a, b, 3);
 	sort_three(a, 1);
-	insort_to_a(a, b);
+	sort_into_a(a, b);
 	final_sort_a(a);
 	sorted_to_a(a, b);
 	final_sort_a(a);
