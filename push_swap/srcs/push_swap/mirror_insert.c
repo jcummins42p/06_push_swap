@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:30:28 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/09 17:18:33 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 13:44:23 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	sorted_to_a(t_stack **a, t_stack **b)
 	while (*b)
 	{
 		rot = cost_asc(a, (*b)->val, min_v(a), max_v(a));
+		/*ft_printf("Cheapest rotation is %d\n", rot);*/
 		if (rot > 0)
 			while (rot-- > 0)
 				ra(a, 1);

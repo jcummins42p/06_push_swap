@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:49:40 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/09 14:58:03 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 13:43:32 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	cost_asc(t_stack **a, int insert, int min_a, int max_a)
 			distance_ra++;
 		}
 	}
-	if (distance_ra < (int)(list_size(a) / 2))
+	if (distance_ra < ((int)(list_size(a) / 2) + 1))
 		return (distance_ra);
 	else
 		return (distance_ra - (int)list_size(a));

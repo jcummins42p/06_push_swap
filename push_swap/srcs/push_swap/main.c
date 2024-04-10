@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:09:10 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/09 17:20:30 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 14:36:04 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,16 @@ void	argv_free(char **argv)
 	free(argv);
 }
 
-//	more efficient management for smaller stacks
+//	more efficient management for smaller stacks size 4 or 5
 void	sort_small(t_stack **a, t_stack **b, int size)
 {
-	if (size == 4)
+	(void)size;
+	pb(a, b);
+	if (size == 5)
 		pb(a, b);
-	else
-	{
-		pb(a, b);
-		pb(a, b);
-		insort_to_b(a, b);
-	}
-	if (size == 3)
-		sort_three(a, 1);
-	insort_to_a(a, b);
+	sort_three(a, 1);
+	final_sort_b(b);
+	sorted_to_a(a, b);
 	final_sort_a(a);
 }
 
@@ -53,7 +49,7 @@ void	ft_sort(t_stack **a)
 			ra(a, 1);
 		else if (list_size(a) == 3)
 			sort_three(a, 1);
-		else if (list_size(a) < 7)
+		else if (list_size(a) < 6)
 			sort_small(a, &b, list_size(a));
 		else
 			mirror_insert(a, &b);
@@ -73,13 +69,14 @@ int	main(int argc, char **argv)
 		return (1);
 	if (argc == 2 && argv[1])
 	{
-		free_flag = 1;
 		argv = ft_split(argv[1], ' ');
+		if (argv)
+			free_flag = 1;
 	}
-	if (!list_init(&a, &argv[1]))
-		write(2, "Error\n", 6);
-	else
+	if (argv && list_init(&a, &argv[1]))
 		ft_sort(&a);
+	else
+		write(2, "Error\n", 6);
 	if (free_flag)
 		argv_free(argv);
 	return (0);

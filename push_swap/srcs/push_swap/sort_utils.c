@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:33:34 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/09 16:07:08 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 13:47:30 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,18 @@ void	final_sort_b(t_stack **b)
 	int	rotate_by;
 
 	rotate_by = 0;
-	rotate_by = cost_desc(b, min_v(b) - 1, min_v(b), max_v(b));
-	if (rotate_by > 0)
-		while (rotate_by-- > 0)
-			rb(b, 1);
-	else if (rotate_by < 0)
-		while (rotate_by++ < 0)
+	if (!check_reverse(b))
+	{
+		rotate_by = cost_desc(b, min_v(b) - 1, min_v(b), max_v(b));
+		if (rotate_by > 0)
+			while (rotate_by-- > 0)
+				rb(b, 1);
+		else if (rotate_by < 0)
+			while (rotate_by++ < 0)
+				rrb(b, 1);
+		while ((*b)->val < last_node(b)->val)
 			rrb(b, 1);
-	while ((*b)->val < last_node(b)->val)
-		rrb(b, 1);
+	}
 }
 
 void	final_sort_a(t_stack **a)
@@ -74,13 +77,16 @@ void	final_sort_a(t_stack **a)
 	int	rotate_by;
 
 	rotate_by = 0;
-	rotate_by = cost_asc(a, min_v(a) - 1, min_v(a), max_v(a));
-	if (rotate_by > 0)
-		while (rotate_by-- > 0)
+	if (!check_sorted(a))
+	{
+		rotate_by = cost_asc(a, min_v(a) - 1, min_v(a), max_v(a));
+		if (rotate_by > 0)
+			while (rotate_by-- > 0)
+				ra(a, 1);
+		else if (rotate_by < 0)
+			while (rotate_by++ < 0)
+				rra(a, 1);
+		while ((*a)->val > last_node(a)->val)
 			ra(a, 1);
-	else if (rotate_by < 0)
-		while (rotate_by++ < 0)
-			rra(a, 1);
-	while ((*a)->val > last_node(a)->val)
-		ra(a, 1);
+	}
 }

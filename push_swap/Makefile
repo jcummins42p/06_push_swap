@@ -6,11 +6,11 @@
 #    By: jcummins <jcummins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/26 18:08:59 by jcummins          #+#    #+#              #
-#    Updated: 2024/04/06 23:17:11 by jcummins         ###   ########.fr        #
+#    Updated: 2024/04/10 13:17:05 by jcummins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap.out
+NAME = push_swap
 HEADER_DIR = include
 SRC_DIR = srcs
 OBJ_DIR = obj

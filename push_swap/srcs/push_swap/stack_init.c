@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:25:23 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/08 20:32:13 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 14:29:39 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	list_init(t_stack **dst, char **argv)
 	int		i;
 
 	i = 0;
+	if (!argv || !*argv)
+		return (0);
 	if (!valid_numb(argv))
 		return (0);
 	while (argv[i])

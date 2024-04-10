@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:22:09 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/09 16:02:17 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 14:57:43 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,15 @@ int	valid_numb(char **argv)
 		{
 			if (argv[i][j] == '-' || argv[i][j] == '+')
 				j++;
-			if (!isnum(argv[i][j]))
+			while (argv[i][j])
+			{
+				if (isnum(argv[i][j]))
+					j++;
+				else
+					return (0);
+			}
+			if (argv[i][j - 1] == '-' || argv[i][j - 1] == '+')
 				return (0);
-			j++;
 		}
 		j = 0;
 		i++;
