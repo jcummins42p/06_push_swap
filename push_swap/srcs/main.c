@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:09:10 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/10 17:16:14 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:22:37 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sort_small(t_stack **a, t_stack **b, int size)
 	final_sort_a(a);
 }
 
-void	ft_sort(t_stack **a)
+void	sort_options(t_stack **a)
 {
 	t_stack	*b;
 
@@ -77,7 +77,7 @@ int	main(int argc, char **argv)
 		}
 	}
 	if (argv && list_init(&a, &argv[1]))
-		ft_sort(&a);
+		sort_options(&a);
 	else
 		write(2, "Error\n", 6);
 	if (free_flag)

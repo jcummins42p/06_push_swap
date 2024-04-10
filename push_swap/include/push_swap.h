@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/10 18:07:31 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:25:19 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,22 @@ void			rra(t_stack **a, int print_command);
 void			rrb(t_stack **b, int print_command);
 void			rrr(t_stack **a, t_stack **b);
 
+//		cost_calc_asc.c	-	return number of rotations and most efficient
+//							direction to insert a given integer in target
+//							stack
+void			cheap_neighbour_asc(t_stack **a, t_stack **b, int *rot);
+int				cost_asc(t_stack **a, int insert, int min_a, int max_a);
+
+//		cost_calc_desc.c
+void			cheap_neighbour_desc(t_stack **a, t_stack **b, int *rot);
+int				cost_desc(t_stack **b, int insert, int min_b, int max_b);
+
+//		sort_utils.c	- general sort functions used by multiple algorithms
+void			populate_b(t_stack **a, t_stack **b, int remain);
+void			sort_three(t_stack **s, int direction);
+void			final_sort_a(t_stack **a);
+void			final_sort_b(t_stack **b);
+
 //		sort_checks.c
 int				check_reverse(t_stack **a);
 int				check_sorted(t_stack **a);
@@ -96,31 +112,8 @@ void			med_insert(t_stack **a, t_stack **b);
 //							is sorted back into a. Reduces time spent searching
 //							through a large sorted stack.
 void			sorted_to_a(t_stack **a, t_stack **b);
-void			insort_to_a(t_stack **a, t_stack **b);
-void			insort_to_b(t_stack **a, t_stack **b);
+void			sort_into_a(t_stack **a, t_stack **b);
+void			sort_into_b(t_stack **a, t_stack **b);
 void			mirror_insert(t_stack **a, t_stack **b);
-
-//		series_push.c
-void			populate_b_desc(t_stack **a, t_stack **b, int remain);
-
-//		cost_calc_asc.c	-	return number of rotations and most efficient
-//							direction to insert a given integer in target
-//							stack
-void			cheap_neighbour_asc(t_stack **a, t_stack **b, int *rot);
-int				cost_asc(t_stack **a, int insert, int min_a, int max_a);
-
-//		cost_calc_desc.c
-void			cheap_neighbour_desc(t_stack **a, t_stack **b, int *rot);
-int				cost_desc(t_stack **b, int insert, int min_b, int max_b);
-
-//		sort_utils.c	- general sort functions used by multiple algorithms
-void			populate_b(t_stack **a, t_stack **b, int remain);
-void			sort_three(t_stack **s, int direction);
-void			final_sort_a(t_stack **a);
-void			final_sort_b(t_stack **b);
-
-//		main.c
-void			argv_free(char **argv);
-void			ft_sort(t_stack **a);
 
 #endif

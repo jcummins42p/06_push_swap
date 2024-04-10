@@ -1,1 +1,5 @@
 resources
+push_swap/checker_linux
+.*.swp
+sort.c
+obj/
