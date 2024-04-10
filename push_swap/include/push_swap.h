@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/10 12:42:57 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:07:31 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int				list_init(t_stack **a, char **argv);
 //		stack_info.c
 int				min_v(t_stack **s);
 int				max_v(t_stack **s);
-t_stack 		*find_node(t_stack **s, int search);
+t_stack			*find_node(t_stack **s, int search);
 t_stack			*last_node(t_stack **a);
 size_t			list_size(t_stack **s);
 
@@ -51,14 +51,11 @@ char			*ft_itoa_pad(int n, int pad);
 //		visualise.c
 void			draw_stacks(t_stack **a, t_stack **b);
 
-//		utils.c
-long int		ft_atol(char const *str);
-int				isnum(char c);
-
 //		ft_split.c	-	To format input given as a single string into argv arr.
 char			**ft_split(char const *s, char c);
 
 //		validation.c	-	input checks
+long int		ft_atol(char const *str);
 int				valid_range(long n);
 int				valid_uniq(t_stack **a, int n);
 int				valid_numb(char **argv);
@@ -115,7 +112,6 @@ int				cost_asc(t_stack **a, int insert, int min_a, int max_a);
 //		cost_calc_desc.c
 void			cheap_neighbour_desc(t_stack **a, t_stack **b, int *rot);
 int				cost_desc(t_stack **b, int insert, int min_b, int max_b);
-
 
 //		sort_utils.c	- general sort functions used by multiple algorithms
 void			populate_b(t_stack **a, t_stack **b, int remain);
