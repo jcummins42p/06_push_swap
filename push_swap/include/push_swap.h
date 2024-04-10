@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/10 18:25:19 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:45:29 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdbool.h>
 # include <limits.h>
 # include <stdarg.h>
 # include <fcntl.h>
@@ -23,6 +24,7 @@
 typedef struct s_stack
 {
 	int				val;
+	int				position;
 	int				sentry_min;
 	int				sentry_max;
 	struct s_stack	*next;

@@ -6,7 +6,7 @@
 #    By: jcummins <jcummins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/26 18:08:59 by jcummins          #+#    #+#              #
-#    Updated: 2024/04/10 13:17:05 by jcummins         ###   ########.fr        #
+#    Updated: 2024/04/10 18:28:42 by jcummins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ fclean: clean
 	@rm -rf $(NAME)
 	@rm -rf *.out
 	@rm -rf *.txt
+	@rm -rf push_swap
 
 re:	fclean all
 

@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:09:10 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/10 18:22:37 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:50:08 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	sort_small(t_stack **a, t_stack **b, int size)
 	final_sort_a(a);
 }
 
+//	picks the most effective algorithm according to the size of the stack
 void	sort_options(t_stack **a)
 {
 	t_stack	*b;
@@ -60,10 +61,10 @@ void	sort_options(t_stack **a)
 
 int	main(int argc, char **argv)
 {
-	int		free_flag;
+	bool	free_flag;
 	t_stack	*a;
 
-	free_flag = 0;
+	free_flag = false;
 	a = NULL;
 	if (argv == NULL)
 		return (1);
@@ -73,7 +74,7 @@ int	main(int argc, char **argv)
 		if (argv)
 		{
 			argv[0] = "placeholder";
-			free_flag = 1;
+			free_flag = true;
 		}
 	}
 	if (argv && list_init(&a, &argv[1]))
