@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:09:10 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/11 17:13:23 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/11 18:44:13 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	sort_options(t_stack **a)
 		else if (list_size(a) < 6)
 			sort_small(a, &b, list_size(a));
 		else
-			mirror_insert(a, &b);
+			select_insert(a, &b);
 	}
 	list_clear(a);
 	list_clear(&b);

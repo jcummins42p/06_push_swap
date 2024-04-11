@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:25:23 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/11 16:43:06 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/11 18:39:17 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int	new_node(t_stack **dst, int n)
 	if (node == NULL || dst == NULL)
 		return (0);
 	node->val = n;
+	node->target = INT_MAX;
+	node->index = UINT_MAX;
+	node->cost = UINT_MAX;
 	node->sentry_min = NULL;
 	node->sentry_max = NULL;
 	node->next = NULL;
