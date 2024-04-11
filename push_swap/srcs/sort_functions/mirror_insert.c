@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:30:28 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/11 18:05:53 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/11 18:10:26 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,20 +91,11 @@ void	sort_into_b(t_stack **a, t_stack **b)
 	find_node(b, max_v(b))->sentry_max = ft_itoa(max_v(b));
 }
 
-void	free_sentry(t_stack **a, t_stack **b)
+void	free_sentry(t_stack **s)
 {
 	t_stack	*curr;
 
-	curr = *a;
-	while (curr)
-	{
-		if (curr->sentry_min)
-			free(curr->sentry_min);
-		if (curr->sentry_max)
-			free(curr->sentry_max);
-		curr = curr->next;
-	}
-	curr = *b;
+	curr = *s;
 	while (curr)
 	{
 		if (curr->sentry_min)
@@ -127,4 +118,6 @@ void	mirror_insert(t_stack **a, t_stack **b)
 	final_sort_a(a);
 	sorted_to_a(a, b);
 	final_sort_a(a);
+	free_sentry(a);
+	free_sentry(b);
 }
