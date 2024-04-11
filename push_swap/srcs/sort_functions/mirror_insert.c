@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:30:28 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/10 17:28:35 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:44:09 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void	sort_into_b(t_stack **a, t_stack **b)
 		pb(a, b);
 		i++;
 	}
-	find_node(b, min_v(b))->sentry_min = min_v(b);
-	find_node(b, max_v(b))->sentry_max = max_v(b);
+	find_node(b, min_v(b))->sentry_min = ft_itoa(min_v(b));
+	find_node(b, max_v(b))->sentry_max = ft_itoa(max_v(b));
 }
 
 void	mirror_insert(t_stack **a, t_stack **b)

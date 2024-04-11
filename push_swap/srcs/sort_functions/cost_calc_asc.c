@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:49:40 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/10 17:27:21 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:08:59 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,26 @@ void	cheap_neighbour_asc(t_stack **a, t_stack **b, int *rot)
 		rrb(b, 1);
 		*rot = rot_rrb;
 	}
+}
+
+int	target_asc(t_stack **a, int insert, int min_a, int max_a)
+{
+	int		target;
+	t_stack *curr;
+
+	curr	= *a;
+	if (insert > max_a || insert < min_a)
+		target = min_a;
+	else
+	{
+		target = max_a;
+		while (curr && insert > curr->val)
+		{
+			curr = curr->next;
+			target = curr->val;
+		}
+	}
+	return (target);
 }
 
 //	returns an integer signifying the cost to rotate to the target

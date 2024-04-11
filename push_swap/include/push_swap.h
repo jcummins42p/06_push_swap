@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/10 18:45:29 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:51:28 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@
 typedef struct s_stack
 {
 	int				val;
-	int				position;
-	int				sentry_min;
-	int				sentry_max;
+	int				index;
+	int				target;
+	char			*sentry_min;
+	char			*sentry_max;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -46,12 +47,16 @@ size_t			list_size(t_stack **s);
 //		ft_printf.c
 int				ft_printf(const char *str, ...);
 
+//		ft_itoa.c
+char			*ft_itoa(int n);
+
 //		ft_itoa_pad.c
 unsigned int	absolute(int n);
 char			*ft_itoa_pad(int n, int pad);
 
 //		visualise.c
 void			draw_stacks(t_stack **a, t_stack **b);
+void			draw_targets(t_stack **a, t_stack **b);
 
 //		ft_split.c	-	To format input given as a single string into argv arr.
 char			**ft_split(char const *s, char c);
@@ -85,6 +90,7 @@ void			rrr(t_stack **a, t_stack **b);
 //							direction to insert a given integer in target
 //							stack
 void			cheap_neighbour_asc(t_stack **a, t_stack **b, int *rot);
+int				target_asc(t_stack **, int insert, int min_a, int max_a);
 int				cost_asc(t_stack **a, int insert, int min_a, int max_a);
 
 //		cost_calc_desc.c
@@ -117,5 +123,9 @@ void			sorted_to_a(t_stack **a, t_stack **b);
 void			sort_into_a(t_stack **a, t_stack **b);
 void			sort_into_b(t_stack **a, t_stack **b);
 void			mirror_insert(t_stack **a, t_stack **b);
+
+//		select_insert.c	-	finds the target a value for each value in b, finds
+//							the total action cost for each, and executes that
+void			select_insert(t_stack **a, t_stack **b);
 
 #endif

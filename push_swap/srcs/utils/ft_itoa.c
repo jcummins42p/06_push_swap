@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_pad.c                                      :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 12:07:45 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/11 16:52:50 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:52:29 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	n_digits(unsigned int n)
 	return (digits);
 }
 
-unsigned int	absolute(int n)
+static unsigned int	ft_abs(int n)
 {
 	unsigned int	abs;
 
@@ -37,49 +37,36 @@ unsigned int	absolute(int n)
 	return (abs);
 }
 
-static char	*printstr_pad(char *s, unsigned int n, int neg, int pad)
+static char	*printstr(char *s, unsigned int n, int neg)
 {
 	int	i;
 
 	i = (n_digits(n));
-	if (pad > i)
+	s[i-- + neg] = '\0';
+	while (i >= 0)
 	{
-		s[pad--] = '\0';
-		while (pad > i)
-			s[pad--] = ' ';
-	}
-	else
-		s[i + neg] = '\0';
-	while (i > 0)
-	{
-		s[i] = "0123456789"[n % 10];
+		s[i + neg] = "0123456789"[n % 10];
 		n /= 10;
 		i--;
 	}
 	if (neg)
 		s[0] = '-';
-	else
-		s[0] = ' ';
 	return (s);
 }
 
-char	*ft_itoa_pad(int n, int pad)
+char	*ft_itoa(int n)
 {
 	char			*str;
 	int				neg;
 	unsigned int	num;
-	int				size;
 
 	neg = 0;
 	if (n < 0)
 		neg = 1;
-	num = absolute(n);
-	size = n_digits(num) + 1 + neg;
-	if (size < pad)
-		size = pad;
-	str = (char *)malloc((size + 1) * sizeof(char));
+	num = ft_abs(n);
+	str = (char *)malloc((n_digits(num) + 1 + neg) * sizeof(char));
 	if (!str)
 		return (NULL);
-	printstr_pad(str, num, neg, pad);
+	printstr(str, num, neg);
 	return (str);
 }
