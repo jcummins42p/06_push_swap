@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:21:31 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/12 12:24:44 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/12 12:57:38 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ t_stack	*cheapest_node(t_stack **a, t_stack **b)
 		}
 		curr = curr->next;
 	}
-	ft_printf("Cheapest move is index %d to index %d/n", output->index, find_node(a, output->target)->index);
+	ft_printf("Cheapest move is index %d to index %d\n", output->index, find_node(a, output->target)->index);
 	return (output);
 }
 
@@ -115,5 +115,7 @@ void	select_insert(t_stack **a, t_stack **b)
 	set_indices(a, b);
 	find_costs(a, b);
 	draw_targets(a, b);
-	cheapest_node(a, b);
+	rotate_cheapest(a, b);
+	execute(a, b, list_size(a), list_size(b));
+	draw_stacks(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/12 10:59:35 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/12 12:59:59 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,10 @@ void			mirror_insert(t_stack **a, t_stack **b);
 //		select_insert.c	-	finds the target a value for each value in b, finds
 //							the total action cost for each, and executes that
 void			select_insert(t_stack **a, t_stack **b);
+
+//		slect_execute.c	-	eexecutes the rotations and insertion based on the
+//							calculated cheapest option from select_insert.
+void			execute(t_stack **a, t_stack **b, size_t size_a, size_t size_b);
+void			rotate_cheapest(t_stack **a, t_stack **b);
 
 #endif
