@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:21:31 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/12 22:13:12 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/13 00:10:58 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,9 @@ void	select_insert(t_stack **a, t_stack **b)
 	{
 		set_indices(a, b);
 		find_costs(a, b);
+		/*draw_targets(a, b);*/
 		rotate_cheapest(a, b);
 	}
 	final_sort_a(a);
+	/*draw_targets(a, b);*/
 }

@@ -6,7 +6,7 @@
 /*   By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 12:56:05 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/12 22:11:21 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/13 00:10:07 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	execute_mixed(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 			rrb(b, 1);
 		}
 	}
-	else if (a_index >= (list_size(a) + 1) / 2 && b_index < (list_size(b) + 1) /  2)
+	else /*if (a_index >= (list_size(a) + 1) / 2 && b_index < (list_size(b) + 1) /  2)*/
 	{
 		while (a_index < list_size(a))
 		{
