@@ -6,13 +6,23 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:25:23 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/11 18:39:17 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/12 11:32:34 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	new_node(t_stack **dst, int n)
+void	init_node(t_stack *node, int val)
+{
+	node->val = val;
+	node->target = INT_MAX;
+	node->index = UINT_MAX;
+	node->cost = UINT_MAX;
+	node->sentry_min = NULL;
+	node->sentry_max = NULL;
+}
+
+int	new_node(t_stack **dst, int val)
 {
 	t_stack	*node;
 	t_stack	*curr;
@@ -21,13 +31,8 @@ int	new_node(t_stack **dst, int n)
 	node = malloc(sizeof(t_stack));
 	if (node == NULL || dst == NULL)
 		return (0);
-	node->val = n;
-	node->target = INT_MAX;
-	node->index = UINT_MAX;
-	node->cost = UINT_MAX;
-	node->sentry_min = NULL;
-	node->sentry_max = NULL;
 	node->next = NULL;
+	init_node(node, val);
 	if (curr == NULL)
 	{
 		*dst = node;

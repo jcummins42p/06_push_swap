@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   select_insert.c                                    :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:21:31 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/12 11:20:06 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/12 12:24:44 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,19 @@ void	rr_cost(t_stack *a, t_stack *b, long size_a, long size_b)
 	index_b = (long)b->index;
 	b->cost = 0;
 	if ((long)b->index < (size_b / 2))
-		while (index_a-- > 0 || index_b-- > 0)
+		while (index_a > 0 || index_b > 0)
+		{
 			b->cost++;
+			index_a--;
+			index_b--;
+		}
 	else
-		while (index_a++ < size_a || index_b++ < size_b)
+		while (index_a < size_a - 1 || index_b < size_b)
+		{
 			b->cost++;
+			index_a++;
+			index_b++;
+		}
 }
 
 void	find_costs(t_stack **a, t_stack **b)
@@ -78,6 +86,28 @@ void	set_indices(t_stack **a, t_stack **b)
 	}
 }
 
+t_stack	*cheapest_node(t_stack **a, t_stack **b)
+{
+	t_stack	*curr;
+	t_stack	*output;
+	size_t	cheapest;
+
+	curr = *b;
+	output = curr;
+	cheapest = curr->cost;
+	while (curr)
+	{
+		if (curr->cost < cheapest)
+		{
+			cheapest = curr->cost;
+			output = curr;
+		}
+		curr = curr->next;
+	}
+	ft_printf("Cheapest move is index %d to index %d/n", output->index, find_node(a, output->target)->index);
+	return (output);
+}
+
 void	select_insert(t_stack **a, t_stack **b)
 {
 	populate_b(a, b, 3);
@@ -85,4 +115,5 @@ void	select_insert(t_stack **a, t_stack **b)
 	set_indices(a, b);
 	find_costs(a, b);
 	draw_targets(a, b);
+	cheapest_node(a, b);
 }
