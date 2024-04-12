@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/11 18:38:24 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/12 10:59:35 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_stack
 {
 	int				val;
 	int				target;
-	unsigned int	index;
-	unsigned int	cost;
+	size_t			index;
+	size_t			cost;
 	char			*sentry_min;
 	char			*sentry_max;
 	struct s_stack	*next;
