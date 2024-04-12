@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:49:40 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/11 16:08:59 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/12 17:35:42 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ int	target_asc(t_stack **a, int insert, int min_a, int max_a)
 	else
 	{
 		target = max_a;
-		while (curr && insert > curr->val)
+		while (curr) // problem is thsi line if the list in a is out of order
 		{
+			if ((insert < curr->val) && (curr->val < target))
+				target = curr->val;
 			curr = curr->next;
-			target = curr->val;
 		}
 	}
 	return (target);

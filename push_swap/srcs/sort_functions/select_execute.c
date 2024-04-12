@@ -6,69 +6,102 @@
 /*   By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 12:56:05 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/12 12:57:49 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/12 22:11:21 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	execute_rr(t_stack **a, t_stack **b)
+void	execute_rr(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 {
-	while ((*a)->index > 0 && (*b)->index > 0)
+	while (a_index > 0 && b_index > 0)
 	{
-		(*a)->index--;
-		(*b)->index--;
+		a_index--;
+		b_index--;
 		rr(a, b);
 	}
-	while ((*a)->index > 0)
+	while (a_index > 0)
 	{
-		(*a)->index--;
+		a_index--;
 		ra(a, 1);
 	}
-	while ((*b)->index > 0)
+	while (b_index > 0)
 	{
-		(*b)->index--;
+		b_index--;
 		rb(b, 1);
 	}
-	pa(b, a);
 }
 
-void	execute_rrr(t_stack **a, t_stack **b, size_t size_a, size_t size_b)
+void	execute_rrr(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 {
-	while ((*a)->index < size_a && (*b)->index < size_b)
+	while (a_index < list_size(a) && b_index < list_size(b))
 	{
-		(*a)->index++;
-		(*b)->index++;
+		a_index++;
+		b_index++;
 		rrr(a, b);
 	}
-	while ((*a)->index < size_a)
+	while (a_index < list_size(a))
 	{
-		(*a)->index++;
+		a_index++;
 		rra(a, 1);
 	}
-	while ((*b)->index < size_b)
+	while (b_index < list_size(b))
 	{
-		(*b)->index++;
+		b_index++;
 		rrb(b, 1);
 	}
-	pa(b, a);
 }
 
-void	execute(t_stack **a, t_stack **b, size_t size_a, size_t size_b)
+void	execute_mixed(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
+{
+	if (a_index < (list_size(a) + 1 ) / 2 && b_index >= (list_size(b) + 1) / 2)
+	{
+		while (a_index > 0)
+		{
+			a_index--;
+			ra(a, 1);
+		}
+		while (b_index < list_size(b))
+		{
+			b_index++;
+			rrb(b, 1);
+		}
+	}
+	else if (a_index >= (list_size(a) + 1) / 2 && b_index < (list_size(b) + 1) /  2)
+	{
+		while (a_index < list_size(a))
+		{
+			a_index++;
+			rra(a, 1);
+		}
+		while (b_index > 0)
+		{
+			b_index--;
+			rb(b, 1);
+		}
+	}
+}
+
+void	execute(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 {
 
-	if (b->index < (size_b / 2))
-		execute_rr(a, b)
+	if (b_index <= (list_size(b)) / 2 && a_index <= (list_size(a)) / 2)
+		execute_rr(a, b, a_index, b_index);
+	else if (b_index > (list_size(b)) / 2 && a_index > (list_size(a)) / 2)
+		execute_rrr(a, b, a_index, b_index);
 	else
-		execute_rrr(a, b);
+		execute_mixed(a, b, a_index, b_index);
+	pa(b, a);
 }
 
 void	rotate_cheapest(t_stack **a, t_stack **b)
 {
-	t_stack *target_a;
-	t_stack *target_b;
+	size_t	a_index;
+	size_t	b_index;
+	t_stack	*cheapest_b;
 
-	target_b = cheapest_node(a, b);
-	target_a = find_node(a, target_b->target);
-	ft_printf("Value %d (index %d) will be pushed to value %d (index %d)", target_b->val, target_b->index, target_a->val, target_a->index);
+	cheapest_b = cheapest_node(b);
+	b_index = cheapest_b->index;
+	a_index = find_node(a, (cheapest_b)->target)->index;
+	execute(a, b, a_index, b_index);
 }

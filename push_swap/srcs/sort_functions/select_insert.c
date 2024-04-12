@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:21:31 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/12 12:57:38 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/12 22:13:12 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	rr_cost(t_stack *a, t_stack *b, long size_a, long size_b)
 	index_a = (long)a->index;
 	index_b = (long)b->index;
 	b->cost = 0;
-	if ((long)b->index < (size_b / 2))
+	if ((long)b->index <= (size_b / 2))
 		while (index_a > 0 || index_b > 0)
 		{
 			b->cost++;
@@ -28,7 +28,7 @@ void	rr_cost(t_stack *a, t_stack *b, long size_a, long size_b)
 			index_b--;
 		}
 	else
-		while (index_a < size_a - 1 || index_b < size_b)
+		while (index_a < size_a || index_b < size_b)
 		{
 			b->cost++;
 			index_a++;
@@ -48,19 +48,19 @@ void	find_costs(t_stack **a, t_stack **b)
 	while (curr)
 	{
 		curr->target = target_asc(a, curr->val, min_v(a), max_v(a));
-		if (curr->index > (size_b / 2) && \
-				find_node(a, curr->target)->index > (size_a / 2))
+		if (curr->index > ((size_b) / 2) && \
+				find_node(a, curr->target)->index > (size_a) / 2)
 			rr_cost(find_node(a, curr->target), curr, \
 				list_size(a), list_size(b));
-		else if (curr->index > (size_b / 2))
+		else if (curr->index > (size_b) / 2)
 			curr->cost = (size_b - curr->index)
 				+ find_node(a, curr->target)->index;
-		else if (find_node(a, curr->target)->index > (size_a / 2))
+		else if (find_node(a, curr->target)->index > (size_a) / 2)
 			curr->cost = curr->index
 				+ (size_a - find_node(a, curr->target)->index);
 		else
 			rr_cost(find_node(a, curr->target), curr, \
-				list_size(a), list_size(b));
+				size_a, size_b);
 		curr = curr->next;
 	}
 }
@@ -82,11 +82,13 @@ void	set_indices(t_stack **a, t_stack **b)
 	while (curr)
 	{
 		curr->index = i++;
+		curr->target = INT_MAX;
+		curr->cost = INT_MAX;
 		curr = curr->next;
 	}
 }
 
-t_stack	*cheapest_node(t_stack **a, t_stack **b)
+t_stack	*cheapest_node(t_stack **b)
 {
 	t_stack	*curr;
 	t_stack	*output;
@@ -104,7 +106,6 @@ t_stack	*cheapest_node(t_stack **a, t_stack **b)
 		}
 		curr = curr->next;
 	}
-	ft_printf("Cheapest move is index %d to index %d\n", output->index, find_node(a, output->target)->index);
 	return (output);
 }
 
@@ -112,10 +113,11 @@ void	select_insert(t_stack **a, t_stack **b)
 {
 	populate_b(a, b, 3);
 	sort_three(a, 1);
-	set_indices(a, b);
-	find_costs(a, b);
-	draw_targets(a, b);
-	rotate_cheapest(a, b);
-	execute(a, b, list_size(a), list_size(b));
-	draw_stacks(a, b);
+	while (*b)
+	{
+		set_indices(a, b);
+		find_costs(a, b);
+		rotate_cheapest(a, b);
+	}
+	final_sort_a(a);
 }
