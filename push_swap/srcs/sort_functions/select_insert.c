@@ -6,13 +6,13 @@
 /*   By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 09:50:50 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/13 09:52:51 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/13 15:11:44 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rr_cost(t_stack *a, t_stack *b, long size_a, long size_b)
+static void	rr_cost(t_stack *a, t_stack *b, long size_a, long size_b)
 {
 	long	index_a;
 	long	index_b;
@@ -40,7 +40,7 @@ void	rr_cost(t_stack *a, t_stack *b, long size_a, long size_b)
 	}
 }
 
-void	find_costs(t_stack **a, t_stack **b)
+static void	find_costs(t_stack **a, t_stack **b)
 {
 	t_stack	*curr;
 	size_t	size_a;
@@ -69,7 +69,7 @@ void	find_costs(t_stack **a, t_stack **b)
 	}
 }
 
-void	set_indices(t_stack **a, t_stack **b)
+static void	set_indices(t_stack **a, t_stack **b)
 {
 	t_stack			*curr;
 	unsigned int	i;

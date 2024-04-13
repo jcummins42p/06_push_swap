@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/13 09:41:00 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/13 14:29:30 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,10 @@ void			sort_into_a(t_stack **a, t_stack **b);
 void			sort_into_b(t_stack **a, t_stack **b);
 void			mirror_insert(t_stack **a, t_stack **b);
 
+//		group_push.c	-	pushes integers to b in range groups rather than
+//							all together, to make future sorting more efficient
+void			group_push(t_stack **a, t_stack **b);
+
 //		select_insert.c	-	finds the target a value for each value in b, finds
 //							the total action cost for each, and executes that
 t_stack			*cheapest_node(t_stack **b);
@@ -132,7 +136,7 @@ void			select_insert(t_stack **a, t_stack **b);
 
 //		slect_execute.c	-	eexecutes the rotations and insertion based on the
 //							calculated cheapest option from select_insert.
-void			execute(t_stack **a, t_stack **b, size_t size_a, size_t size_b);
+//void			execute(t_stack **a, t_stack **b, size_t size_a, size_t size_b);
 void			rotate_cheapest(t_stack **a, t_stack **b);
 
 #endif

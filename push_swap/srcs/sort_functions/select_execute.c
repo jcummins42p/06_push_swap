@@ -6,13 +6,13 @@
 /*   By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 12:56:05 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/13 09:44:29 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/13 14:26:52 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	execute_rr(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
+static void	execute_rr(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 {
 	while (a_index > 0 && b_index > 0)
 	{
@@ -32,7 +32,7 @@ void	execute_rr(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 	}
 }
 
-void	execute_rrr(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
+static void	execute_rrr(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 {
 	while (a_index < list_size(a) && b_index < list_size(b))
 	{
@@ -52,7 +52,7 @@ void	execute_rrr(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 	}
 }
 
-void	execute_mixed(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
+static void	execute_mixed(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 {
 	if (a_index < (list_size(a) + 1) / 2 && b_index >= (list_size(b) + 1) / 2)
 	{
@@ -70,7 +70,7 @@ void	execute_mixed(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 	}
 }
 
-void	execute(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
+static void	execute(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 {
 	if (b_index <= (list_size(b)) / 2 && a_index <= (list_size(a)) / 2)
 		execute_rr(a, b, a_index, b_index);
