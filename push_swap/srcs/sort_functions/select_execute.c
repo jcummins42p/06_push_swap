@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   select_execute.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+        */
+/*   By: jcummins <jcummins@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 12:56:05 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/13 15:23:35 by jcummins         ###   ########.fr       */
+/*   Created: 2024/04/13 15:44:10 by jcummins          #+#    #+#             */
+/*   Updated: 2024/04/13 15:44:12 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
