@@ -6,7 +6,7 @@
 /*   By: jcummins <jcummins@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 15:45:30 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/13 15:45:31 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/13 17:12:13 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,10 @@ int	list_init(t_stack **dst, char **argv)
 		if (valid_uniq(dst, n) && valid_range(n))
 			new_node(dst, (int)n);
 		else
+		{
+			list_clear(dst);
 			return (0);
+		}
 		i++;
 	}
 	return (1);
