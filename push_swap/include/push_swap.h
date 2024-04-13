@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:17:02 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/12 17:38:26 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/13 09:41:00 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void			rrr(t_stack **a, t_stack **b);
 //							direction to insert a given integer in target
 //							stack
 void			cheap_neighbour_asc(t_stack **a, t_stack **b, int *rot);
-int				target_asc(t_stack **, int insert, int min_a, int max_a);
+int				target_asc(t_stack **a, int insert, int min_a, int max_a);
 int				cost_asc(t_stack **a, int insert, int min_a, int max_a);
 
 //		cost_calc_desc.c

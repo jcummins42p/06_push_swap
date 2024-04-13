@@ -1,12 +1,12 @@
-/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   select_insert.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 14:21:31 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/13 00:10:58 by jcummins         ###   ########.fr       */
+/*   Created: 2024/04/13 09:50:50 by jcummins          #+#    #+#             */
+/*   Updated: 2024/04/13 09:52:51 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,23 @@ void	rr_cost(t_stack *a, t_stack *b, long size_a, long size_b)
 	index_b = (long)b->index;
 	b->cost = 0;
 	if ((long)b->index <= (size_b / 2))
+	{
 		while (index_a > 0 || index_b > 0)
 		{
 			b->cost++;
 			index_a--;
 			index_b--;
 		}
+	}
 	else
+	{
 		while (index_a < size_a || index_b < size_b)
 		{
 			b->cost++;
 			index_a++;
 			index_b++;
 		}
+	}
 }
 
 void	find_costs(t_stack **a, t_stack **b)
@@ -117,9 +121,7 @@ void	select_insert(t_stack **a, t_stack **b)
 	{
 		set_indices(a, b);
 		find_costs(a, b);
-		/*draw_targets(a, b);*/
 		rotate_cheapest(a, b);
 	}
 	final_sort_a(a);
-	/*draw_targets(a, b);*/
 }

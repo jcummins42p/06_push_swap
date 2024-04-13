@@ -6,7 +6,7 @@
 /*   By: jcummins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:41:05 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/12 17:16:16 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/13 10:08:35 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,31 +112,4 @@ void	draw_targets(t_stack **a, t_stack **b)
 		free(b_cost);
 	}
 	ft_printf("\t~~~A~~~\t\t~~~B~~~\n");
-}
-
-void	draw_stacks(t_stack **a, t_stack **b)
-{
-	size_t	height;
-	size_t	i;
-	char	*col_a;
-	char	*col_b;
-
-	i = 1;
-	height = list_size(a);
-	if (height <= list_size(b))
-		height = list_size(b);
-	ft_printf("\n");
-	while (i <= height)
-	{
-		col_a = draw_value_by_index(a, (height - i));
-		col_b = draw_value_by_index(b, (height - i));
-		if (i == height)
-			ft_printf("HEAD ->");
-		ft_printf("\t%s\t\t%s\n",
-			col_a, col_b);
-		i++;
-		free(col_a);
-		free(col_b);
-	}
-	ft_printf("\t~~~A~~~\t\t\t~~~B~~~\n");
 }

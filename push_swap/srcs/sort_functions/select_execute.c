@@ -6,7 +6,7 @@
 /*   By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 12:56:05 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/13 00:10:07 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/13 09:44:29 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,37 +54,24 @@ void	execute_rrr(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 
 void	execute_mixed(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 {
-	if (a_index < (list_size(a) + 1 ) / 2 && b_index >= (list_size(b) + 1) / 2)
+	if (a_index < (list_size(a) + 1) / 2 && b_index >= (list_size(b) + 1) / 2)
 	{
-		while (a_index > 0)
-		{
-			a_index--;
+		while (a_index-- > 0)
 			ra(a, 1);
-		}
-		while (b_index < list_size(b))
-		{
-			b_index++;
+		while (b_index++ < list_size(b))
 			rrb(b, 1);
-		}
 	}
-	else /*if (a_index >= (list_size(a) + 1) / 2 && b_index < (list_size(b) + 1) /  2)*/
+	else
 	{
-		while (a_index < list_size(a))
-		{
-			a_index++;
+		while (a_index++ < list_size(a))
 			rra(a, 1);
-		}
-		while (b_index > 0)
-		{
-			b_index--;
+		while (b_index-- > 0)
 			rb(b, 1);
-		}
 	}
 }
 
 void	execute(t_stack **a, t_stack **b, size_t a_index, size_t b_index)
 {
-
 	if (b_index <= (list_size(b)) / 2 && a_index <= (list_size(a)) / 2)
 		execute_rr(a, b, a_index, b_index);
 	else if (b_index > (list_size(b)) / 2 && a_index > (list_size(a)) / 2)
