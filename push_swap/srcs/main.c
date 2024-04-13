@@ -6,7 +6,7 @@
 /*   By: jcummins <jcummins@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 15:41:07 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/13 15:41:11 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/13 15:57:41 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int	main(int argc, char **argv)
 	free_flag = 0;
 	a = NULL;
 	if (argv == NULL)
+		return (1);
+	if (argc < 2)
 		return (1);
 	if (argc == 2 && argv[1])
 	{
