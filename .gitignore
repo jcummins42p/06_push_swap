@@ -7,3 +7,6 @@ push_swap_visualizer/build push_swap_visualizer/CMakeLists.txt push_swap_visuali
 push_swap_test_linux.sh
 Push-Swap-Tester/checker_linux Push-Swap-Tester/checker_Mac Push-Swap-Tester/pro_checker Push-Swap-Tester/push_swap_test_linux.sh Push-Swap-Tester/push_swap_test.sh Push-Swap-Tester/README_ES.md Push-Swap-Tester/README.md
 wip/group_push.c
+Push-Swap-Tester/
+push_swap_test_linux.sh
+checker_linux
