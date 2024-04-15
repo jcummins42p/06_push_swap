@@ -6,7 +6,7 @@
 /*   By: jcummins <jcummins@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 15:41:07 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/15 18:04:26 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:07:00 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	read_command(t_stack **a)
 			break ;
 		if (!execute_cmd(a, &b, cmd))
 			write(2, "Error\n", 6);
+		draw_stacks(a, &b);
 	}
 	if (read_size == 0)
 	{
