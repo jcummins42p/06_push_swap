@@ -6,7 +6,7 @@
 /*   By: jcummins <jcummins@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 15:47:26 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/13 15:47:30 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:58:33 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdbool.h>
 # include <limits.h>
 # include <stdarg.h>
 # include <fcntl.h>
