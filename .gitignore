@@ -10,3 +10,4 @@ wip/group_push.c
 Push-Swap-Tester/
 push_swap_test_linux.sh
 checker_linux
+srcs/utils/visualise.c

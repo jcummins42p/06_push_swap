@@ -6,7 +6,7 @@
 /*   By: jcummins <jcummins@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 15:41:07 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/15 18:07:00 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/15 19:01:32 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,16 @@ int	execute_cmd(t_stack **a, t_stack **b, char *cmd)
 	return (1);
 }
 
+void	output_answer(t_stack **a, t_stack **b, size_t final_size)
+{
+	if (check_sorted(a) && list_size(a) == final_size)
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
+	list_clear(b);
+	list_clear(a);
+}
+
 void	read_command(t_stack **a)
 {
 	t_stack	*b;
@@ -61,22 +71,17 @@ void	read_command(t_stack **a)
 	final_size = list_size(a);
 	while (1)
 	{
+		ft_memset(cmd, 0, sizeof(cmd));
 		read_size = read(STDIN_FILENO, cmd, 4);
 		if (read_size <= 0)
 			break ;
+		cmd[read_size] = '\0';
 		if (!execute_cmd(a, &b, cmd))
 			write(2, "Error\n", 6);
 		draw_stacks(a, &b);
 	}
 	if (read_size == 0)
-	{
-		if (check_sorted(a) && list_size(a) == final_size)
-			ft_printf("OK\n");
-		else
-			ft_printf("KO\n");
-	}
-	list_clear(&b);
-	list_clear(a);
+		output_answer(a, &b, final_size);
 }
 
 int	main(int argc, char **argv)
