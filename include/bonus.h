@@ -6,7 +6,7 @@
 /*   By: jcummins <jcummins@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 15:47:26 by jcummins          #+#    #+#             */
-/*   Updated: 2024/04/15 19:01:19 by jcummins         ###   ########.fr       */
+/*   Updated: 2024/04/15 19:05:15 by jcummins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int				ft_printf(const char *str, ...);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 
 //		ft_memset.c
-void	*ft_memset(void *s, int c, size_t n);
+void			*ft_memset(void *s, int c, size_t n);
 
 //		ft_split.c	-	To format input given as a single string into argv arr.
 char			**ft_split(char const *s, char c);
